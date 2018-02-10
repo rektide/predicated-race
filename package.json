@@ -1,5 +1,5 @@
 {
-	"name": "predicated-race",
+	"name": "promise-race-predicated",
 	"version": "1.0.0",
 	"description": "Keep running Promise.race until a predicate function is satisfied.",
 	"main": "index.js",
@@ -9,7 +9,7 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://archive.voodoowarez.com/predicated-race"
+		"url": "https://archive.voodoowarez.com/promise-race-predicated"
 	},
 	"keywords": [],
 	"author": "rektide de la faye",

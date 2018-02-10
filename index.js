@@ -2,14 +2,14 @@
 
 var
   esm= require( "@std/esm")( module),
-  inner= esm( "./predicated-race.js")
+  inner= esm( "./promise-race-predicated.js")
 
-// Export predicatedRace
-module.exports= inner.predicatedRace
+// Export promiseRacePredicated as default
+module.exports= inner.promiseRacePredicated
 // Use defineProperties so we don't ugly up the predicatedRace export with enumerables
 Object.defineProperties( module.exports, {
-	predicatedRace: {
-		value: inner.predicatedRace
+	promiseRacePredicated: {
+		value: inner.promiseRacePredicated
 	},
 	NoMatchError: {
 		value: inner.NoMatchError

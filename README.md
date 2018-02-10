@@ -1,11 +1,11 @@
-# predicated-race
+# promise-race-predicated
 
 > Keep running Promise.race until a predicate function is satisfied.
 
 # Usage
 
 ```js
-import predicatedRace from "predicated-race"
+import predicatedRace from "promise-race-predicated"
 import delay from "delay"
 
 var ignore= 1
