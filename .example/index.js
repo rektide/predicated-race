@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 "use strict"
 
-var raceUntil= require( "..")
+var predicatedRace= require( "..")
 function delay( ms, value){
 	return new Promise( function( resolve){
 		setInterval( resolve.bind( null, value), ms)
@@ -18,7 +18,7 @@ function myPredicate( value, error, index, promises){
 	return --ignore< 0
 }
 
-raceUntil([
+predicatedRace([
 	delay(600, "too late"), // because "this" happened first
 	delay(200, "this"),
 	Promise.reject("errors are ignored"), // because myPredicate ignores errors

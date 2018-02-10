@@ -2,16 +2,14 @@
 
 var
   esm= require( "@std/esm")( module),
-  inner= esm( "./race-until.js")
+  inner= esm( "./predicated-race.js")
 
-console.log(Object.keys(inner))
-
-// Export raceUntil
-module.exports= inner.raceUntil
-// Use defineProperties so we don't ugly up the raceUntil export with enumerables
+// Export predicatedRace
+module.exports= inner.predicatedRace
+// Use defineProperties so we don't ugly up the predicatedRace export with enumerables
 Object.defineProperties( module.exports, {
-	raceUntil: {
-		value: inner.raceUntil
+	predicatedRace: {
+		value: inner.predicatedRace
 	},
 	NoMatchError: {
 		value: inner.NoMatchError

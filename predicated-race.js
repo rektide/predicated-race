@@ -21,7 +21,7 @@ export async function mapper( promise, index){
 }
 
 /**
-* `NoMatchError` can be used to detect when raceUntil completes with no matches
+* `NoMatchError` can be used to detect when predicatedRace completes with no matches
 */
 export class NoMatchError extends Error{
 	constructor( promises){
@@ -33,7 +33,7 @@ export class NoMatchError extends Error{
 /**
 * Run a promise-race on `promises` until a condition `predicate` returns a truthy value
 */
-export async function raceUntil( promises, predicate, fullResult){
+export async function predicatedRace( promises, predicate, fullResult){
 	// allow promises collection to itself by a promise. SOP to accept async values in async functions!
 	promises= await promises
 	// we will be modifying this so clone it
@@ -73,4 +73,4 @@ export async function raceUntil( promises, predicate, fullResult){
 	}
 	throw error
 }
-export default raceUntil
+export default predicatedRace
