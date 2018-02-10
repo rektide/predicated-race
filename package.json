@@ -1,0 +1,27 @@
+{
+	"name": "race-until",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://archive.voodoowarez.com/race-until"
+	},
+	"keywords": [],
+	"author": "rektide de la faye",
+	"license": "MIT",
+	"module": "race-until.js",
+	"esm": true,
+	"@std/esm": {
+		"esm": "js",
+		"cjs": {
+			"namedExports": true
+		}
+	},
+	"optionalDependencies": {
+		"@std/esm": "^0.21.3"
+	}
+}
