@@ -8,12 +8,14 @@ export async function mapper( promise, index){
 		var value= await promise
 		return {
 			value,
-			index
+			index,
+			resolved: true
 		}
 	}catch( error){
 		return {
 			error,
-			index
+			index,
+			rejected: true
 		}
 	}
 }
@@ -34,12 +36,15 @@ export class NoMatchError extends Error{
 export async function raceUntil( promises, predicate, fullResult){
 	// allow promises collection to itself by a promise. SOP to accept async values in async functions!
 	promises= await promises
-	// to determine winner, I borrow a trick from https://www.jcore.com/2016/12/18/promise-me-you-wont-use-promise-race/ -
-	// map promise success & failure to a value that includes the index
-	var candidates= promsies.map( mapper)
-	while( candidates.length){
-		// we now have a candidate- with either a `value` or `error`- and it's index
-		var candidate= await Promsie.race( candidates)
+	// we will be modifying this so clone it
+	promises= promises.slice( 0)
+	while( promises.length){
+		// to determine winner, I borrow a trick from https://www.jcore.com/2016/12/18/promise-me-you-wont-use-promise-race/ -
+		// map promise success & failure to a value that includes the index
+		var candidates= promises.map( mapper)
+
+		// get candidate- with either a `value` or `error`- and it's index
+		var candidate= await Promise.race( candidates)
 		// perform our test to see whether we're going to accept this candidate
 		if( await predicate( candidate.value, candidate.error, candidate.index, promises)){
 			// we have accepted the candidate. figure out how to return it:
@@ -49,7 +54,7 @@ export async function raceUntil( promises, predicate, fullResult){
 				candidate.promises= promises
 				return candidate
 			}
-			if( candidate.value){
+			if( candidate.resolved){
 				// resolve, like this candidate did
 				return candidate.value
 			}
@@ -57,7 +62,7 @@ export async function raceUntil( promises, predicate, fullResult){
 			throw candidate.error
 		}
 		// discard this non-match and iterate
-		candidates.splice( candidate.index, 1)
+		promises.splice( candidate.index, 1)
 	}
 	var error= new NoMatchError()
 	if( fullResult){

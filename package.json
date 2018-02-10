@@ -1,7 +1,7 @@
 {
 	"name": "race-until",
 	"version": "1.0.0",
-	"description": "",
+	"description": "Keep running Promise.race until a predicate function is satisfied.",
 	"main": "index.js",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1"
