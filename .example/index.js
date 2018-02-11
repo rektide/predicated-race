@@ -21,7 +21,7 @@ function myPredicate( value, error, index, promises){
 promiseRacePredicated([
 	delay(600, "too late"), // because "this" happened first
 	delay(200, "this"),
-	Promise.reject("errors are ignored"), // because myPredicate ignores errors
+	Promise.reject("predicate ignores errors"), // because myPredicate ignores errors
 	delay(100, "hit first but ignored") //  because myPredicate skips `ignores` results
 ], myPredicate).then( console.log.bind( console)) //=> "this"
 

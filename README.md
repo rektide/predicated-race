@@ -19,7 +19,7 @@ function myPredicate( value, error, index, promises){
 raceUntil([
 	delay(600, "too late"),
 	delay(200, "this"),
-	Promise.reject("errors are ignored"),
+	Promise.reject("predicate ignores errors"),
 	delay(100, "hit first but ignored")
 ], myPredicate).then( console.log.bind( console)) //=> "this"
 ```
