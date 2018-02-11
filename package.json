@@ -1,9 +1,9 @@
 {
 	"name": "promise-race-predicated",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "Keep running Promise.race until a predicate function is satisfied.",
 	"main": "index.js",
-	"module": "predicated-race.js",
+	"module": "promise-race-predicated.js",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
