@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 "use strict"
+import promiseRacePredicated from "../promise-race-predicated.js"
 
-var promiseRacePredicated= require( "..")
 function delay( ms, value){
 	return new Promise( function( resolve){
-		setInterval( resolve.bind( null, value), ms)
+		setTimeout( resolve.bind( null, value), ms)
 	})
 }
 var ignore= 1

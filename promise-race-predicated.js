@@ -1,4 +1,3 @@
-
 /**
 * Unfold a promise into something which will always resolve, either with `value` or `error`.
 * Additionall attach an optional `index` field with the index number of this item in a collection, as per with the contract for `Array.prototype.map`
